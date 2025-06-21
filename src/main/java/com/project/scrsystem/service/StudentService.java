@@ -1,14 +1,13 @@
 package com.project.scrsystem.service;
 
+import com.project.scrsystem.dto.CourseResponseDTO;
 import com.project.scrsystem.dto.StudentRequestDTO;
 import com.project.scrsystem.dto.StudentResponseDTO;
+import com.project.scrsystem.model.Course;
 import com.project.scrsystem.model.Student;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class StudentService {
@@ -35,8 +34,12 @@ public class StudentService {
         return s;
     }
 
-    public Collection<Student> getAllStudents() {
-        return studentMap.values();
+    public List<StudentResponseDTO> getAllStudents() {
+        List<StudentResponseDTO> result = new ArrayList<>();
+        for (Student s : studentMap.values()) {
+            result.add(new StudentResponseDTO(s.getId(), s.getName(), s.getEmail()));
+        }
+        return result;
     }
 
 
