@@ -41,5 +41,4 @@ public class CourseController {
         return ResponseEntity.ok(paged);
     }
 
-
 }

@@ -2,7 +2,9 @@ package com.project.scrsystem.service;
 
 import com.project.scrsystem.dto.StudentRequestDTO;
 import com.project.scrsystem.dto.StudentResponseDTO;
+import com.project.scrsystem.exception.CustomException;
 import com.project.scrsystem.model.Student;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -14,7 +16,7 @@ public class StudentService {
     public StudentResponseDTO addStudent(StudentRequestDTO dto) {
         for (Student s : studentMap.values()) {
             if (s.getEmail().equalsIgnoreCase(dto.getEmail())) {
-                throw new RuntimeException("Email already exists");
+                throw new CustomException("Email already exists", HttpStatus.CONFLICT);
             }
         }
 
@@ -27,7 +29,9 @@ public class StudentService {
 
     public Student getStudent(UUID id) {
         Student s = studentMap.get(id);
-        if (s == null) throw new RuntimeException("Student not found");
+        if (s == null) {
+            throw new CustomException("Student not found", HttpStatus.NOT_FOUND);
+        }
         return s;
     }
 
