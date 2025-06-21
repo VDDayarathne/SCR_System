@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -27,5 +28,4 @@ public class StudentController {
     public ResponseEntity<?> getStudent(@PathVariable UUID studentId) {
         return ResponseEntity.ok(studentService.getStudent(studentId));
     }
-
 }
