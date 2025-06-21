@@ -1,9 +1,7 @@
 package com.project.scrsystem.service;
 
-import com.project.scrsystem.dto.CourseResponseDTO;
 import com.project.scrsystem.dto.StudentRequestDTO;
 import com.project.scrsystem.dto.StudentResponseDTO;
-import com.project.scrsystem.model.Course;
 import com.project.scrsystem.model.Student;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +12,6 @@ public class StudentService {
     private final Map<UUID, Student> studentMap = new HashMap<>();
 
     public StudentResponseDTO addStudent(StudentRequestDTO dto) {
-        // email unique check
         for (Student s : studentMap.values()) {
             if (s.getEmail().equalsIgnoreCase(dto.getEmail())) {
                 throw new RuntimeException("Email already exists");
@@ -41,6 +38,4 @@ public class StudentService {
         }
         return result;
     }
-
-
 }

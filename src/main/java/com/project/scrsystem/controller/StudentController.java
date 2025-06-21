@@ -1,6 +1,5 @@
 package com.project.scrsystem.controller;
 
-import com.project.scrsystem.dto.CourseResponseDTO;
 import com.project.scrsystem.dto.StudentRequestDTO;
 import com.project.scrsystem.dto.StudentResponseDTO;
 import com.project.scrsystem.service.StudentService;
